@@ -1,10 +1,11 @@
 # create-ip-2-group
 Checkpoint API code
 
+
 create-host-add-2-group.sh
 
 input file sample for test
-:
+//from file
 1.1.1.1
 2.2.2.2
 146.18.2.137
