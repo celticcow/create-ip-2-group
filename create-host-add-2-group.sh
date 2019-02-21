@@ -42,8 +42,8 @@ do
 done <"$file"
 
 
-mgmt_cli -d 146.18.96.25 publish -s id.txt
-mgmt_cli -d 146.18.96.25 logout -s id.txt
+mgmt_cli -d $DOMAIN publish -s id.txt
+mgmt_cli -d $DOMAIN logout -s id.txt
 
 
 printf "%s\n\n" "END"
