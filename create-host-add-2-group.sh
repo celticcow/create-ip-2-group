@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # gdunlap / celticcow
-# 02.17.19
+# 02.21.19
+# version 1.3
 # read list of IP's from file.  see if host exist with IP
 # add existing to group / or create new and add to group
 
@@ -33,10 +34,12 @@ do
 	#printf "found $ehost\n"	
 	if [ -z $ehost ]; then
 		printf  "need to add $var\n"
-		mgmt_cli -d $DOMAIN add host name c-$var ip-address $var groups.1 $GROUP -s id.txt
+		mgmt_cli -d $DOMAIN add host name c-$var ip-address $var groups $GROUP -s id.txt
 	else
 		printf "found $ehost\n"
-		mgmt_cli -d $DOMAIN set host name $ehost groups.1 $GROUP -s id.txt
+		# set host name causes problems and will remove it from other groups
+		mgmt_cli -d $DOMAIN set group name $GROUP members.add $ehost -s id.txt
+		#mgmt_cli -d $DOMAIN set host name $ehost groups.1 $GROUP -s id.txt
 	fi
 
 done <"$file"
